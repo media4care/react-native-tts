@@ -5,11 +5,12 @@ def safeExtGet(prop, fallback) {
 buildscript {
     repositories {
         google()
-        maven { url 'https://artifactory.navkit-pipeline.tt3.com/artifactory/maven-remotes' }
+        mavenCentral()
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath("com.android.tools.build:gradle:7.0.4")
     }
 }
 
@@ -17,17 +18,13 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion safeExtGet('compileSdkVersion', 31)
-    buildToolsVersion safeExtGet('buildToolsVersion', '30.0.2')
+    buildToolsVersion safeExtGet('buildToolsVersion', '31.0.0')
 
     defaultConfig {
-        minSdkVersion safeExtGet('minSdkVersion', 23)
-        targetSdkVersion safeExtGet('targetSdkVersion', 29)
+        minSdkVersion safeExtGet('minSdkVersion', 24)
+        targetSdkVersion safeExtGet('targetSdkVersion', 31)
         versionCode 1
         versionName "1.0"
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -37,6 +34,4 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-//    implementation "com.facebook.react:react-native:${project.reactNativeVersion}"
-
 }
